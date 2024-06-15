@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushNamedAndRemoveUntil(
         context,
         Pages.home,
-            (route) => false,
+        (route) => false,
       );
     });
   }
@@ -37,14 +37,19 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset('assets/images/app_logo.png', width: 100,),
-            const SizedBox(height: 20,),
-            buildText('Everything Tasks', kWhiteColor, textBold,
-                FontWeight.w600, TextAlign.center, TextOverflow.clip),
+            Image.asset(
+              'assets/images/app_logo.png',
+              width: 100,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            buildText('IMake Tasks', kWhiteColor, textBold, FontWeight.w600,
+                TextAlign.center, TextOverflow.clip),
             const SizedBox(
               height: 10,
             ),
-            buildText('Schedule your week with ease', kWhiteColor, textTiny,
+            buildText('Gerencie suas tarefas!', kWhiteColor, textTiny,
                 FontWeight.normal, TextAlign.center, TextOverflow.clip),
           ],
         )));

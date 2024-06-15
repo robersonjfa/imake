@@ -12,10 +12,6 @@ Route onGenerateRoute(RouteSettings routeSettings) {
   switch (routeSettings.name) {
     case Pages.initial:
       return MaterialPageRoute(
-        builder: (context) => const SplashScreen(),
-      );
-    case Pages.home:
-      return MaterialPageRoute(
         builder: (context) => const TasksScreen(),
       );
     case Pages.createNewTask:

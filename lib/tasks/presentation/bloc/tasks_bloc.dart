@@ -4,10 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/local/model/task_model.dart';
 import '../../data/repository/task_repository.dart';
 
-part 'tasks_event.dart';
-
-part 'tasks_state.dart';
-
 class TasksBloc extends Bloc<TasksEvent, TasksState> {
   final TaskRepository taskRepository;
 
@@ -20,20 +16,20 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
     on<SearchTaskEvent>(_searchTasks);
   }
 
-  _addNewTask(AddNewTaskEvent event, Emitter<TasksState> emit) async {
+  _addNewTask(? event, Emitter<TasksState> emit) async {
     emit(TasksLoading());
     try {
       if (event.taskModel.title.trim().isEmpty) {
-        return emit(AddTaskFailure(error: 'Task title cannot be blank'));
+        return emit(AddTaskFailure(error: 'Título não pode ser vazio'));
       }
       if (event.taskModel.description.trim().isEmpty) {
-        return emit(AddTaskFailure(error: 'Task description cannot be blank'));
+        return emit(AddTaskFailure(error: 'Descrição não pode ser vazia'));
       }
       if (event.taskModel.startDateTime == null) {
-        return emit(AddTaskFailure(error: 'Missing task start date'));
+        return emit(AddTaskFailure(error: 'Faltou a data de inicio'));
       }
       if (event.taskModel.stopDateTime == null) {
-        return emit(AddTaskFailure(error: 'Missing task stop date'));
+        return emit(AddTaskFailure(error: 'Faltou a data de fim'));
       }
       await taskRepository.createNewTask(event.taskModel);
       emit(AddTasksSuccess());
@@ -57,17 +53,17 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
   _updateTask(UpdateTaskEvent event, Emitter<TasksState> emit) async {
     try {
       if (event.taskModel.title.trim().isEmpty) {
-        return emit(UpdateTaskFailure(error: 'Task title cannot be blank'));
+        return emit(UpdateTaskFailure(error: 'Título não pode ser vazio'));
       }
       if (event.taskModel.description.trim().isEmpty) {
         return emit(
-            UpdateTaskFailure(error: 'Task description cannot be blank'));
+            UpdateTaskFailure(error: 'Descrição não pode ser vazia'));
       }
       if (event.taskModel.startDateTime == null) {
-        return emit(UpdateTaskFailure(error: 'Missing task start date'));
+        return emit(UpdateTaskFailure(error: 'Faltou a data de inicio'));
       }
       if (event.taskModel.stopDateTime == null) {
-        return emit(UpdateTaskFailure(error: 'Missing task stop date'));
+        return emit(UpdateTaskFailure(error: 'Faltou a data de fim'));
       }
       emit(TasksLoading());
       final tasks = await taskRepository.updateTask(event.taskModel);

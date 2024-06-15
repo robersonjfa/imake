@@ -24,13 +24,13 @@ class _PageNotFoundState extends State<PageNotFound> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            buildText('Page not found', kBlackColor, textBold, FontWeight.w600,
-                TextAlign.center, TextOverflow.clip),
+            buildText('Página não encontrada', kBlackColor, textBold,
+                FontWeight.w600, TextAlign.center, TextOverflow.clip),
             const SizedBox(
               height: 10,
             ),
-            buildText('Something went wrong', kBlackColor, textTiny,
-                FontWeight.normal, TextAlign.center, TextOverflow.clip),
+            buildText('Erro geral!', kBlackColor, textTiny, FontWeight.normal,
+                TextAlign.center, TextOverflow.clip),
           ],
         )));
   }

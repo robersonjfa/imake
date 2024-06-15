@@ -37,17 +37,6 @@ class TaskDataProvider {
   Future<List<TaskModel>> sortTasks(int sortOption) async {
     switch (sortOption) {
       case 0:
-        tasks.sort((a, b) {
-          // Sort by date
-          if (a.startDateTime!.isAfter(b.startDateTime!)) {
-            return 1;
-          } else if (a.startDateTime!.isBefore(b.startDateTime!)) {
-            return -1;
-          }
-          return 0;
-        });
-        break;
-      case 1:
         //sort by completed tasks
         tasks.sort((a, b) {
           if (!a.completed && b.completed) {
@@ -58,7 +47,7 @@ class TaskDataProvider {
           return 0;
         });
         break;
-      case 2:
+      case 1:
         //sort by pending tasks
         tasks.sort((a, b) {
           if (a.completed == b.completed) {

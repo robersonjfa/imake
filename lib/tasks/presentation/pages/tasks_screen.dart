@@ -41,7 +41,7 @@ class _TasksScreenState extends State<TasksScreen> {
             child: Scaffold(
           backgroundColor: kWhiteColor,
           appBar: CustomAppBar(
-            title: 'Bem-vindo',
+            title: '?',
             showBackArrow: false,
             actionWidgets: [
               PopupMenuButton<int>(
@@ -55,17 +55,10 @@ class _TasksScreenState extends State<TasksScreen> {
                       {
                         context
                             .read<TasksBloc>()
-                            .add(SortTaskEvent(sortOption: 0));
-                        break;
-                      }
-                    case 1:
-                      {
-                        context
-                            .read<TasksBloc>()
                             .add(SortTaskEvent(sortOption: 1));
                         break;
                       }
-                    case 2:
+                    case 1:
                       {
                         context
                             .read<TasksBloc>()
@@ -76,27 +69,6 @@ class _TasksScreenState extends State<TasksScreen> {
                 },
                 itemBuilder: (BuildContext context) {
                   return [
-                    PopupMenuItem<int>(
-                      value: 0,
-                      child: Row(
-                        children: [
-                          SvgPicture.asset(
-                            'assets/svgs/calender.svg',
-                            width: 15,
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          buildText(
-                              'Por Data',
-                              kBlackColor,
-                              textSmall,
-                              FontWeight.normal,
-                              TextAlign.start,
-                              TextOverflow.clip)
-                        ],
-                      ),
-                    ),
                     PopupMenuItem<int>(
                       value: 1,
                       child: Row(
@@ -257,9 +229,7 @@ class _TasksScreenState extends State<TasksScreen> {
                 Icons.add_circle,
                 color: kPrimaryColor,
               ),
-              onPressed: () {
-                Navigator.pushNamed(context, Pages.createNewTask);
-              }),
+              onPressed: null),
         )));
   }
 }
